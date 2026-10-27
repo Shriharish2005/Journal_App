@@ -62,7 +62,7 @@ export default function HeaderNav() {
     <div className="flex items-center gap-2">
       {/* Navigation Pills (SignedIn) */}
       <SignedIn>
-        <div className="hidden lg:flex items-center p-1 bg-orange-100/50 backdrop-blur-sm rounded-xl border border-orange-200/50 shadow-inner">
+        <div className="hidden lg:flex items-center p-1 bg-orange-100/50 dark:bg-stone-900/60 backdrop-blur-sm rounded-xl border border-orange-200/50 dark:border-stone-800 shadow-inner">
           {navItems.map((item) => {
             const isActive = activeNav === item.id;
             const Icon = item.icon;
@@ -72,11 +72,11 @@ export default function HeaderNav() {
                   type="button"
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? "bg-white text-orange-950 shadow-xs shadow-orange-500/10 font-bold"
-                      : "text-stone-600 hover:text-orange-800 hover:bg-white/50"
+                      ? "bg-white dark:bg-stone-800 text-orange-950 dark:text-orange-100 shadow-xs shadow-orange-500/10 font-bold"
+                      : "text-stone-600 dark:text-stone-300 hover:text-orange-800 dark:hover:text-orange-300 hover:bg-white/50 dark:hover:bg-stone-800/50"
                   }`}
                 >
-                  <Icon className={`h-3.5 w-3.5 ${isActive ? "text-orange-600" : "text-stone-400"}`} />
+                  <Icon className={`h-3.5 w-3.5 ${isActive ? "text-orange-600 dark:text-orange-400" : "text-stone-400 dark:text-stone-500"}`} />
                   <span>{item.label}</span>
                 </button>
               </Link>

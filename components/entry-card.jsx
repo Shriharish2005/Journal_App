@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Card, CardContent } from "./ui/card";
 import Link from "next/link";
 import { format } from "date-fns";
-import { Star, BookOpen, Clock, Tag as TagIcon, Pencil, Trash2, Loader2, Sparkles } from "lucide-react";
+import { Star, BookOpen, Clock, Tag as TagIcon, Pencil, Trash2, Loader2 } from "lucide-react";
 import { Button } from "./ui/button";
 import {
   AlertDialog,
@@ -79,7 +79,7 @@ const EntryCard = ({ entry, onDelete }) => {
   if (isDeleted) return null;
 
   return (
-    <Card className="group relative bg-white/85 backdrop-blur-md border border-orange-200/80 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 rounded-3xl overflow-hidden">
+    <Card className="group relative bg-white/85 dark:bg-stone-900/85 backdrop-blur-md border border-orange-200/80 dark:border-stone-800 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 rounded-3xl overflow-hidden">
       {/* Mood Accent Strip */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-400 via-amber-400 to-orange-500 opacity-80 group-hover:opacity-100 transition-opacity" />
 
@@ -88,33 +88,33 @@ const EntryCard = ({ entry, onDelete }) => {
           {/* Main Content Link */}
           <Link href={`/journal/${entry.id}`} className="space-y-2.5 flex-1 block">
             <div className="flex items-center gap-2.5">
-              <span className="text-2xl p-1.5 rounded-xl bg-orange-100/70 border border-orange-200/50 shadow-xs group-hover:scale-110 transition-transform">
+              <span className="text-2xl p-1.5 rounded-xl bg-orange-100/70 dark:bg-orange-950/60 border border-orange-200/50 dark:border-orange-800/40 shadow-xs group-hover:scale-110 transition-transform">
                 {entry.moodData?.emoji || "✨"}
               </span>
               <div>
-                <h3 className="font-bold text-lg text-stone-900 group-hover:text-orange-600 transition-colors line-clamp-1">
+                <h3 className="font-bold text-lg text-stone-900 dark:text-stone-100 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors line-clamp-1">
                   {entry.title}
                 </h3>
-                <time className="text-xs text-stone-400">
+                <time className="text-xs text-stone-400 dark:text-stone-500">
                   {format(new Date(entry.createdAt), "MMMM d, yyyy")}
                 </time>
               </div>
             </div>
-            <p className="text-stone-600 line-clamp-2 text-sm leading-relaxed font-serif">
+            <p className="text-stone-600 dark:text-stone-300 line-clamp-2 text-sm leading-relaxed font-serif">
               {plainText}
             </p>
           </Link>
 
           {/* Quick Actions (Favorite, Edit, Delete) */}
-          <div className="flex items-center gap-1 shrink-0 bg-stone-50/80 p-1 rounded-xl border border-stone-200/60">
+          <div className="flex items-center gap-1 shrink-0 bg-stone-50/80 dark:bg-stone-800/70 p-1 rounded-xl border border-stone-200/60 dark:border-stone-700">
             {/* Favorite Button */}
             <button
               type="button"
               onClick={handleToggleFav}
               className={`p-1.5 rounded-lg transition-all cursor-pointer ${
                 isFavorite
-                  ? "bg-amber-100/80 text-amber-500"
-                  : "text-stone-400 hover:text-amber-500 hover:bg-amber-50"
+                  ? "bg-amber-100/80 dark:bg-amber-950/60 text-amber-500"
+                  : "text-stone-400 hover:text-amber-500 hover:bg-amber-50 dark:hover:bg-stone-700"
               }`}
               title="Toggle Favorite"
             >
@@ -128,7 +128,7 @@ const EntryCard = ({ entry, onDelete }) => {
             {/* Edit Button */}
             <Link
               href={`/journal/write?edit=${entry.id}`}
-              className="p-1.5 rounded-lg hover:bg-orange-50 text-stone-400 hover:text-orange-600 transition-colors cursor-pointer"
+              className="p-1.5 rounded-lg hover:bg-orange-50 dark:hover:bg-stone-700 text-stone-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors cursor-pointer"
               title="Edit Entry"
             >
               <Pencil className="h-4 w-4" />
@@ -139,23 +139,23 @@ const EntryCard = ({ entry, onDelete }) => {
               <AlertDialogTrigger asChild>
                 <button
                   type="button"
-                  className="p-1.5 rounded-lg hover:bg-red-50 text-stone-400 hover:text-red-500 transition-colors cursor-pointer"
+                  className="p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-950/40 text-stone-400 hover:text-red-500 transition-colors cursor-pointer"
                   title="Delete Entry"
                 >
                   <Trash2 className="h-4 w-4" />
                 </button>
               </AlertDialogTrigger>
-              <AlertDialogContent className="rounded-3xl border border-orange-200">
+              <AlertDialogContent className="rounded-3xl border border-orange-200 dark:border-stone-800 dark:bg-stone-900">
                 <AlertDialogHeader>
-                  <AlertDialogTitle className="text-xl font-bold text-stone-900">
+                  <AlertDialogTitle className="text-xl font-bold text-stone-900 dark:text-stone-100">
                     Delete this reflection?
                   </AlertDialogTitle>
-                  <AlertDialogDescription className="text-stone-600">
+                  <AlertDialogDescription className="text-stone-600 dark:text-stone-400">
                     Are you sure you want to delete &ldquo;{entry.title}&rdquo;? This will remove the entry and cannot be undone.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter className="gap-2 sm:gap-0">
-                  <AlertDialogCancel className="rounded-xl">Cancel</AlertDialogCancel>
+                  <AlertDialogCancel className="rounded-xl dark:border-stone-700 dark:hover:bg-stone-800">Cancel</AlertDialogCancel>
                   <Button
                     onClick={handleDelete}
                     className="bg-red-500 hover:bg-red-600 text-white rounded-xl cursor-pointer"
@@ -171,36 +171,36 @@ const EntryCard = ({ entry, onDelete }) => {
         </div>
 
         {/* Badges: Tags, Collection & Word Count */}
-        <div className="mt-5 pt-3.5 border-t border-orange-100 flex flex-wrap items-center justify-between gap-2 text-xs">
+        <div className="mt-5 pt-3.5 border-t border-orange-100 dark:border-stone-800 flex flex-wrap items-center justify-between gap-2 text-xs">
           <div className="flex flex-wrap items-center gap-1.5">
             {entry.collection && (
-              <span className="px-2.5 py-0.5 bg-orange-100 text-orange-900 rounded-full font-semibold border border-orange-200/60">
+              <span className="px-2.5 py-0.5 bg-orange-100 dark:bg-orange-950/60 text-orange-900 dark:text-orange-200 rounded-full font-semibold border border-orange-200/60 dark:border-orange-800/50">
                 📁 {entry.collection.name}
               </span>
             )}
             {entry.tags && entry.tags.slice(0, 3).map((tag) => (
               <span
                 key={tag}
-                className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-amber-50/80 text-amber-900 rounded-full text-[11px] font-medium border border-amber-200/60"
+                className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-amber-50/80 dark:bg-amber-950/40 text-amber-900 dark:text-amber-200 rounded-full text-[11px] font-medium border border-amber-200/60 dark:border-amber-800/40"
               >
-                <TagIcon className="h-2.5 w-2.5 text-amber-600" />
+                <TagIcon className="h-2.5 w-2.5 text-amber-600 dark:text-amber-400" />
                 #{tag}
               </span>
             ))}
             {entry.tags && entry.tags.length > 3 && (
-              <span className="text-stone-400 text-xs font-medium">
+              <span className="text-stone-400 dark:text-stone-500 text-xs font-medium">
                 +{entry.tags.length - 3}
               </span>
             )}
           </div>
 
-          <div className="flex items-center gap-2.5 text-stone-500 text-xs font-medium">
-            <span className="flex items-center gap-1 px-2 py-0.5 bg-orange-50 rounded-md text-orange-800">
-              <BookOpen className="h-3 w-3 text-orange-600" />
+          <div className="flex items-center gap-2.5 text-stone-500 dark:text-stone-400 text-xs font-medium">
+            <span className="flex items-center gap-1 px-2 py-0.5 bg-orange-50 dark:bg-stone-800 rounded-md text-orange-800 dark:text-stone-300">
+              <BookOpen className="h-3 w-3 text-orange-600 dark:text-orange-400" />
               {words}w
             </span>
-            <span className="flex items-center gap-1 px-2 py-0.5 bg-amber-50 rounded-md text-amber-800">
-              <Clock className="h-3 w-3 text-amber-600" />
+            <span className="flex items-center gap-1 px-2 py-0.5 bg-amber-50 dark:bg-stone-800 rounded-md text-amber-800 dark:text-stone-300">
+              <Clock className="h-3 w-3 text-amber-600 dark:text-amber-400" />
               {readingTime}m
             </span>
           </div>
