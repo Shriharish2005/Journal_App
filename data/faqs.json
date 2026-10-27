@@ -1,0 +1,26 @@
+[
+  {
+    "q": "Is my journal data secure and private?",
+    "a": "Yes, absolutely! Your entries are bound to your secure authenticated identity, stored with enterprise encryption in PostgreSQL, and never sold, shared, or indexed by public web crawlers."
+  },
+  {
+    "q": "How does mood tracking & emotional analytics work?",
+    "a": "Every journal entry can be paired with one of over 20 tailored emotions. Our analytics dashboard automatically calculates emotional trends, streak consistency, and mood averages over weekly and monthly periods."
+  },
+  {
+    "q": "Can I organize my entries with collections and tags?",
+    "a": "Yes! You can organize reflections into thematic collections (such as Gratitude, Career, Travel, or Health) and assign custom hashtags for instant filtering and discovery."
+  },
+  {
+    "q": "Can I set custom daily writing goals?",
+    "a": "Yes! Reflct features a customizable daily word count target with real-time progress rings to motivate consistent daily writing habits."
+  },
+  {
+    "q": "Does Reflct support rich formatting and images?",
+    "a": "Yes! The distraction-free rich text editor supports headings, bold, italics, blockquotes, bullet lists, and automatic mood-based aesthetic photography powered by Pixabay."
+  },
+  {
+    "q": "Can I access my journal on mobile devices?",
+    "a": "Yes! Reflct is built mobile-first with responsive glassmorphic layouts that feel like a native app on iOS, Android, and tablets."
+  }
+]
